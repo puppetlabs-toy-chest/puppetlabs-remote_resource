@@ -5,5 +5,5 @@ Autotest.add_discovery do
 end
 
 Autotest.add_discovery do
-    "puppet_lvm"
+    "puppet"
 end

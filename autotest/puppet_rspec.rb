@@ -26,11 +26,6 @@ Autotest.add_hook :initialize do |at|
         at.files_matching %r!spec/(unit|integration)/.*\.rb!
     }
 
-    # the puppet test libraries
-    at.add_mapping(%r!^test/lib/puppettest/.*!) { |filename, _|
-        at.files_matching %r!spec/(unit|integration)/.*\.rb!
-    }
-
         # the puppet spec libraries
     at.add_mapping(%r!^spec/lib/spec.*!) { |filename, _|
         at.files_matching %r!spec/(unit|integration)/.*\.rb!
@@ -43,7 +38,7 @@ Autotest.add_hook :initialize do |at|
 end
 
 # a place for overrides when necessary.
-class Autotest::Puppet_lvmRspec < Autotest::Rspec
+class Autotest::PuppetRspec < Autotest::Rspec
     def spec_commands
         ENV["AUTOTEST"] = "true"
         ENV["PATH"].split(File::PATH_SEPARATOR).collect { |dir| File.join(dir, "spec") }
