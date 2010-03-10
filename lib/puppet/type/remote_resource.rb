@@ -1,4 +1,4 @@
-Puppet::Type.newtype(:remote_resource) do
+Puppet::Type.newtype(:external_resource) do
     newparam(:name) do
         desc "The name of the remote resource."
     end
@@ -27,7 +27,7 @@ Puppet::Type.newtype(:remote_resource) do
     def retrieve
         start = Time.now
         while true
-            return {} if remote_resource_up?
+            return {} if external_resource_up?
             if Time.now - start > self[:timeout]
                 fail "Remote resource not up within timeout #{self[:timeout]}"
             end
@@ -39,7 +39,7 @@ Puppet::Type.newtype(:remote_resource) do
 
     private
 
-    def remote_resource_up?
+    def external_resource_up?
         begin
             provider.perform_check(self[:check])
             return true

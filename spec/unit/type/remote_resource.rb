@@ -1,8 +1,8 @@
 Dir.chdir(File.dirname(__FILE__)) { (s = lambda { |f| File.exist?(f) ? require(f) : Dir.chdir("..") { s.call(f) } }).call("spec/spec_helper.rb") }
 
-describe Puppet::Type.type(:remote_resource) do
+describe Puppet::Type.type(:external_resource) do
     before do
-        @type = Puppet::Type.type(:remote_resource)
+        @type = Puppet::Type.type(:external_resource)
     end
 
     it "should exist" do
