@@ -6,4 +6,4 @@ external_resource { "file exists":
     check => "/bin/ls /tmp/myfile"
 }
 
-notify { "File exists": require => Remote_resource["file exists"] }
+notify { "File exists": require => External_resource["file exists"] }
