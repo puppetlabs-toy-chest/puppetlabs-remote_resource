@@ -1,6 +1,6 @@
 Puppet::Type.newtype(:external_resource) do
     newparam(:name) do
-        desc "The name of the remote resource."
+        desc "The name of the external resource."
     end
 
     newparam(:frequency) do
@@ -16,7 +16,7 @@ Puppet::Type.newtype(:external_resource) do
     end
 
     newparam(:timeout) do
-        desc "How long the resource should wait for the remote resource
+        desc "How long the resource should wait for the external resource
             to come up, in seconds."
 
         defaultto 300
@@ -29,10 +29,10 @@ Puppet::Type.newtype(:external_resource) do
         while true
             return {} if external_resource_up?
             if Time.now - start > self[:timeout]
-                fail "Remote resource not up within timeout #{self[:timeout]}"
+                fail "External resource not up within timeout #{self[:timeout]}"
             end
 
-            info "Remote resource is not up; delaying for #{self[:frequency]} seconds before next check"
+            info "External resource is not up; delaying for #{self[:frequency]} seconds before next check"
             sleep self[:frequency]
         end
     end

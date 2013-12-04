@@ -1,8 +1,8 @@
-Puppet Remote Resource
+Puppet External Resource
 ======================
 This is a simple resource that just blocks transactions
 until a check passes, theoretically indicating that some
-kind of remote resource is in a desired state.
+kind of external resource is in a desired state.
 
 If the resource does not reach the desired state within
 a given timeout period (defaulting to 5 minutes), then
